@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using projekt.Data;
 using projekt.Models;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace Projekt.Controllers
 {
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class TipController : Controller
     {
         private readonly kontekst _context;

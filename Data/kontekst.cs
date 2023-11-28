@@ -1,9 +1,10 @@
 using projekt.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace projekt.Data
 {
-    public class kontekst : DbContext
+    public class kontekst : IdentityDbContext<ApplicationUser>
     {
         public kontekst(DbContextOptions<kontekst> options) : base(options)
         {
@@ -15,6 +16,7 @@ namespace projekt.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Avtor>().ToTable("Avtor");
             modelBuilder.Entity<Dokument>().ToTable("Dokument");
             modelBuilder.Entity<Tip>().ToTable("Tip");

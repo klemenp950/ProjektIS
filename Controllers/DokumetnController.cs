@@ -7,9 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using projekt.Data;
 using projekt.Models;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace Projekt.Controllers
 {
+    [Authorize]
+
     public class DokumetnController : Controller
     {
         private readonly kontekst _context;
@@ -27,6 +32,7 @@ namespace Projekt.Controllers
         }
 
         // GET: Dokumetn/Details/5
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Dokumenti == null)
@@ -47,6 +53,7 @@ namespace Projekt.Controllers
         }
 
         // GET: Dokumetn/Create
+        [Authorize(Roles = "User")]
         public IActionResult Create()
         {
             ViewData["AvtorID"] = new SelectList(_context.Avtorji, "AvtorID", "Ime");
@@ -59,6 +66,7 @@ namespace Projekt.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Create([Bind("DokumentID,Ime,SteviloVrstic,SteviloZnakov,Velikost,Datum,TipID,AvtorID")] Dokument dokument)
         {
             if (ModelState.IsValid)
@@ -73,6 +81,7 @@ namespace Projekt.Controllers
         }
 
         // GET: Dokumetn/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Dokumenti == null)
@@ -95,6 +104,7 @@ namespace Projekt.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id, [Bind("DokumentID,Ime,SteviloVrstic,SteviloZnakov,Velikost,Datum,TipID,AvtorID")] Dokument dokument)
         {
             if (id != dokument.DokumentID)
@@ -128,6 +138,7 @@ namespace Projekt.Controllers
         }
 
         // GET: Dokumetn/Delete/5
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Dokumenti == null)
@@ -161,14 +172,14 @@ namespace Projekt.Controllers
             {
                 _context.Dokumenti.Remove(dokument);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DokumentExists(int? id)
         {
-          return (_context.Dokumenti?.Any(e => e.DokumentID == id)).GetValueOrDefault();
+            return (_context.Dokumenti?.Any(e => e.DokumentID == id)).GetValueOrDefault();
         }
     }
 }

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using projekt.Data;
 using projekt.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projekt.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class AvtorController : Controller
     {
         private readonly kontekst _context;
