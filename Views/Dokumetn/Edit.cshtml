@@ -1,0 +1,61 @@
+@model projekt.Models.Dokument
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Dokument</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DokumentID" />
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SteviloVrstic" class="control-label">Število vrstic</label>
+                <input asp-for="SteviloVrstic" class="form-control" />
+                <span asp-validation-for="SteviloVrstic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SteviloZnakov" class="control-label">Število znakov</label>
+                <input asp-for="SteviloZnakov" class="form-control" />
+                <span asp-validation-for="SteviloZnakov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Velikost" class="control-label"></label>
+                <input asp-for="Velikost" class="form-control" />
+                <span asp-validation-for="Velikost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum" class="control-label"></label>
+                <input asp-for="Datum" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipID" class="control-label">Tip datoteke</label>
+                <select asp-for="TipID" class="form-control" asp-items="ViewBag.TipID"></select>
+                <span asp-validation-for="TipID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvtorID" class="control-label">Avtor</label>
+                <select asp-for="AvtorID" class="form-control" asp-items="ViewBag.AvtorID"></select>
+                <span asp-validation-for="AvtorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
