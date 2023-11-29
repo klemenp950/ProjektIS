@@ -7,7 +7,7 @@ Ime seminarske naloge:
 Člana seminarske naloge:
 
 Martin Simčič 63190035
--
+Klemen Parkelj 63220239
 
 Opis seminarske naloge:
 
