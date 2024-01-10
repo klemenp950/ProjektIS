@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("Baza");
+var connectionString = builder.Configuration.GetConnectionString("Azure");
 
 builder.Services.AddDbContext<kontekst>(options =>
     options.UseSqlServer(connectionString));
