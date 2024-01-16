@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using projekt.Data;
 using projekt.Models;
+using web.Filters;
 
 namespace Projekt.Controllers_Api
 {
     [Route("api/v1/dokument")]
     [ApiController]
+    [ApiKeyAuth]
     public class DokumentApiController : ControllerBase
     {
         private readonly kontekst _context;
