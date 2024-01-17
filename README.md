@@ -1,7 +1,7 @@
 # ProjektIS
 
 ## Ime seminarske naloge:
-Content Overview
+Dokumenti
 
 ## Člana seminarske naloge:
 Martin Simčič 63190035 
